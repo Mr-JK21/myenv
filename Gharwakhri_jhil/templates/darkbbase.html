@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:image" content="" />
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/static/bassets/imgs/theme/favicon.svg" />
+        <!-- Template CSS -->
+        <link href="/static/bassets/css/main.css?v=1.1" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body class="dark">
+        <div class="screen-overlay"></div>
+        <aside class="navbar-aside" id="offcanvas_aside">
+            <div class="aside-top">
+                <a href="{% url 'home' %}" class="brand-wrap">
+                    <img src="/static/bassets/imgs/theme/logo.svg" class="logo" alt="Profile" />
+                </a>
+                <div>
+                    <button class="btn btn-icon btn-aside-minimize"><i class="text-muted material-icons md-menu_open"></i></button>
+                </div>
+            </div>
+            <nav>
+                <ul class="menu-aside">
+                    <li class="menu-item">
+                        <a class="menu-link" href="{% url 'sellerhome' %}">
+                            <i class="icon material-icons md-store"></i>
+                            <span class ="text">My Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item ">
+                        <a class="menu-link" href="page-products-list.html">
+                            <i class="icon material-icons md-shopping_bag"></i>
+                            <span class="text">Products View</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item ">
+                        <a class="menu-link" href="page-orders-1.html">
+                            <i class="icon material-icons md-shopping_cart"></i>
+                            <span class="text">Orders List</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a class="menu-link" href="page-form-product-1.html">
+                            <i class="icon material-icons md-add_box"></i>
+                            <span class="text">Add product</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr />
+                <ul class="menu-aside">
+                    <li class="menu-item">
+                        <a class="menu-link" href="page-settings-1.html">
+                            <i class="icon material-icons md-settings"></i>
+                            <span class="text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+                <br />
+                <br />
+            </nav>
+        </aside>
+        <main class="main-wrap">
+            <header class="main-header navbar">
+                <div class="col-search">
+                    {% comment %}            HERE NAME OF WEBSITE         {% endcomment %}
+                </div>
+                <div class="col-nav">
+                    <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i class="material-icons md-apps"></i></button>
+                    <ul class="nav">
+        
+                        <li class="nav-item">
+                            <a class="nav-link btn-icon darkmode" href="{% url 'sellerhome' %}"> <i class="material-icons md-nights_stay"></i> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                        </li>
+                        {% comment %}<li class="dropdown nav-item">
+                            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                                <a class="dropdown-item text-brand" href="#"><img src="/static/bassets/imgs/theme/flag-us.png" alt="English" />English</a>
+                                <a class="dropdown-item" href="#"><img src="/static/bassets/imgs/theme/flag-fr.png" alt="Français" />Français</a>
+                                <a class="dropdown-item" href="#"><img src="/static/bassets/imgs/theme/flag-jp.png" alt="Français" />日本語</a>
+                                <a class="dropdown-item" href="#"><img src="/static/bassets/imgs/theme/flag-cn.png" alt="Français" />中国人</a>
+                            </div>
+                        </li> {% endcomment %}
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="/static/bassets/imgs/people/avatar-2.png" alt="User" /></a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                                {% if request.user.is_authenticated %}
+                                <p class="dropdown-item">{{ request.user.username }}</p>
+                                <a class="dropdown-item" href="{% url 'sellerhome' %}"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                                {% endif %}
+                                {% comment %} <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                                <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                                <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a> {% endcomment %}
+                                <a class="dropdown-item" href="{% url 'helpcenter' %}"><i class="material-icons md-help_outline"></i>Help center</a>
+                                {% if request.user.is_authenticated %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            {% block backcontent %}
+            
+            {% endblock %}
+
+            <footer class="main-footer font-xs">
+                <div class="row pb-30 pt-15">
+                    <div class="col-sm-6">
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        &copy; Gharwakhri_JK
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end">All rights reserved</div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+        <script src="/static/bassets/js/vendors/jquery-3.6.0.min.js"></script>
+        <script src="/static/bassets/js/vendors/bootstrap.bundle.min.js"></script>
+        <script src="/static/bassets/js/vendors/select2.min.js"></script>
+        <script src="/static/bassets/js/vendors/perfect-scrollbar.js"></script>
+        <script src="/static/bassets/js/vendors/jquery.fullscreen.min.js"></script>
+        <!-- Main Script -->
+        <script src="/static/bassets/js/main.js?v=1.1" type="text/javascript"></script>
+    </body>
+</html>

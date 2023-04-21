@@ -1,0 +1,16 @@
+{% extends 'bbase.html' %}
+{% block title %}
+    Gharwakhri - Delete Product
+{% endblock %}
+
+{% block backcontent %}
+<div class="container">
+    <h1 class="mb-4">Confirm Product Deletion</h1>
+    <p>Are you sure you want to delete the product "{{ product.name }}"?</p>
+    <form method="post"action="{% url 'delete_product' product.id %}"">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="{% url 'sellerhome' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - addp
+{% endblock %}
+
+{% block backcontent %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="{{ form.name.id_for_label }}">Name:</label>
+    {{ form.name }}
+    <br>
+
+    <label for="{{ form.price.id_for_label }}">Price:</label>
+    {{ form.price }}
+    <br>
+
+    <label for="{{ form.quantity.id_for_label }}">Quantity:</label>
+    {{ form.quantity }}
+    <br>
+
+    <label for="{{ form.is_active.id_for_label }}">Active:</label>
+    {{ form.is_active }}
+    <br>
+
+    <label for="{{ form.image.id_for_label }}">Image:</label>
+    {{ form.image }}
+    <br>
+
+    <label for="{{ form.description.id_for_label }}">Description:</label>
+    {{ form.description }}
+    <br>
+
+    <label for="{{ form.category.id_for_label }}">Category:</label>
+    {{ form.category }}
+    <a href="{% url 'createcategory' %}" class="btn btn-primary">Add Category</a>
+    <br>    
+
+    <label for="{{ form.meta_keywords.id_for_label }}">Meta Keywords:</label>
+    {{ form.meta_keywords }}
+    <br>
+
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+
+
+
+
+{% comment %} {% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - pppp
+{% endblock %}
+
+{% block backcontent %}
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+ {% endcomment %}
+
+
+
+
+
+{% comment %} {% extends 'bbase.html' %}
+{% block backcontent %}
+<form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+     <label for="name">Product Name:</label>
+     <input type="text" name="name" required><br><br>
+     
+     <label for="price">Price:</label>
+     <input type="number" name="price" required><br><br>
+     
+     <label for="image">Image:</label>
+     <input type="file" name="image" accept="image/*" required onchange="previewImage(event)"><br>
+     <img id="imagePreview" src="#" alt="Preview Image" style="display: none; max-width: 300px;"><br><br>
+     
+     <label for="quantity">Quantity:</label>
+     <input type="number" name="quantity" required><br><br>
+     
+     <label for="description">Description:</label><br>
+     <textarea name="description" rows="5" required></textarea><br><br>
+     
+     <label for="categories">Categories:</label>
+     <select name="categories" multiple required>
+       {% for category in categories %}
+         <option value="{{ category.id }}">{{ category.name }}</option>
+       {% endfor %}
+     </select><br><br>
+     
+     <button type="submit">Submit</button>
+   </form>
+   
+   <script src="{% static '/scratches/product.js' %}"></script>
+   
+{% endblock %} {% endcomment %}

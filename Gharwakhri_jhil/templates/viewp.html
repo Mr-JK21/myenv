@@ -1,0 +1,20 @@
+{% extends 'bbase.html' %}
+
+{% block backcontent %}
+  <div class="product_image">
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+  </div>
+  <h1>{{ product.name }}</h1>
+  <br />
+  <p><strong>Price:</strong> ${{ product.price }}</p>
+  <p><strong>Active:</strong> {% if product.is_active %}Yes{% else %}No{% endif %}</p>
+  <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+  <p><strong>Description:</strong> {{ product.description }}</p>
+  <p><strong>Meta Keywords:</strong> {{ product.meta_keywords }}</p>
+  <p><strong>Categories:</strong> 
+    {% for category in product.categories.all %}
+      {{ category.name }}
+      {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </p>
+{% endblock %}

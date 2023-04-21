@@ -1,0 +1,132 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - Seller Profile
+{% endblock %}
+
+{% block backcontent %}
+            <section class="content-main">
+
+                <div class="card mb-4">
+                    <div class="card-header bg-brand-2" style="height: 150px"></div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xl col-lg flex-grow-0" style="flex-basis: 230px">
+                                <div class="img-thumbnail shadow w-100 bg-white position-relative text-center" style="height: 190px; width: 200px; margin-top: -120px">
+                                    <img src="dynamic image here " class="center-xy img-fluid" alt="Logo Brand" />
+                                </div>
+                            </div>
+                            <!--  col.// -->
+                            <div class="col-xl col-lg">
+                                <h3>Dynamic Name Here</h3>
+                                <p>Dynamic address here</p>
+                            </div>
+                            <!--  col.// -->
+                            <div class="col-xl-4 text-md-end">
+                                <select class="form-select w-auto d-inline-block">
+                                    <option>Available</option>
+                                    <option>Disable shop</option>   
+                                </select>
+                            </div>
+                            <!--  col.// -->
+                        </div>
+                        <!-- card-body.// -->
+                        <hr class="my-4" />
+                        <div class="row g-4">
+                            {% comment %} <div class="col-md-12 col-lg-4 col-xl-2">
+                                <article class="box">
+                                    <p class="mb-0 text-muted">Total sales:</p>
+                                    <h5 class="text-success">238</h5>
+                                    <p class="mb-0 text-muted">Revenue:</p>
+                                    <h5 class="text-success mb-0">₹2380</h5>
+                                </article>
+                            </div> {% endcomment %}
+                            <!--  col.// -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <h6>Contacts</h6>
+                                <p>
+                                    Manager: Jerome Bell <br />
+                                    info@example.com <br />
+                                    (229) 555-0109, (808) 555-0111
+                                </p>
+                            </div>
+                            <!--  col.// -->
+                            <div class="col-sm-6 col-lg-4 col-xl-3">
+                                <h6>Address</h6>
+                                <p>
+                                    Country: California <br />
+                                    Address: Ranchview Dr. Richardson <br />
+                                    Postal code: 62639
+                                </p>
+                            </div>
+                            <!--  col.// -->
+                            {% comment %} <div class="col-sm-6 col-xl-4 text-xl-end">
+                                <map class="mapbox position-relative d-inline-block">
+                                    <img src="assets/imgs/misc/map.jpg" class="rounded2" height="120" alt="map" />
+                                    <span class="map-pin" style="top: 50px; left: 100px"></span>
+                                    <button class="btn btn-sm btn-brand position-absolute bottom-0 end-0 mb-15 mr-15 font-xs">Large</button>
+                                </map>
+                            </div> {% endcomment %}
+                            <!--  col.// -->
+                        </div>
+                        <!--  row.// -->
+                    </div>
+                    <!--  card-body.// -->
+                </div>
+                <!--  card.// -->
+                <div class="card mb-4">
+                    <header class="card-header">
+                        <div class="row gx-3">
+                            <div class="col-lg-4 col-md-6 me-auto">
+                                <input type="text" placeholder="Search..." class="form-control" />
+                            </div>
+                            <div class="col-lg-2 col-6 col-md-3">
+                                <select class="form-select">
+                                    <option>All category</option>
+                                    <option>Electronics</option>
+                                    <option>Clothings</option>
+                                    <option>Something else</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-6 col-md-3">
+                                <select class="form-select">
+                                    <option>Latest added</option>
+                                    <option>Cheap first</option>
+                                    <option>Most viewed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- card-header end// -->
+                    <div class="card-body">
+                        <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5">
+                            {% block content %}
+                            {% for product in products %}
+                                <div class="col">
+                                    <div class="card card-product-grid">
+                                        <a href="#" class="img-wrap"> <img src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                                        <div class="info-wrap">
+                                            <a href="#" class="title text-truncate">{{ product.name }}</a>
+                                            <div class="price mb-2">{{ product.price }}</div>
+                                            <div class="price mb-2">Updated at: {{ product.updated_at.date }}</div>
+                                            <a href="#" class="btn btn-sm font-sm rounded btn-brand"> <i class="material-icons md-edit"></i> Edit </a>
+                                            <a href="#" class="btn btn-sm font-sm btn-light rounded"> <i class="material-icons md-delete_forever"></i> Delete </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% endblock %}
+                            <!-- col.// -->
+                        </div>
+                        <!-- row.// -->
+                    </div>
+                    <!-- card-body end// -->
+                </div>
+                <!-- card end// -->
+                
+            </section>
+
+
+{% endblock %}
+
+

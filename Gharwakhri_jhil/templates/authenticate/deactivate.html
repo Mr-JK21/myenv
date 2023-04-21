@@ -1,0 +1,14 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - Deactivate
+{% endblock %}
+
+{% block backcontent %}
+<h1>Remove account</h1>
+<p>Once you delete your account, there is no going back.</p>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">Deactivate</button>
+</form>
+{% endblock %}

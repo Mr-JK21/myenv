@@ -1,0 +1,21 @@
+<div class="image-widget">
+    <div class="preview">
+      {% if widget.value %}
+        <img src="{{ widget.value.url }}" alt="image" width="150">
+      {% else %}
+        <img src="{% static 'myapp/default_image.jpg' %}" alt="default image" width="150">
+      {% endif %}
+    </div>
+    <div class="input-group">
+      <div class="form-control">
+        {{ widget.input }}
+      </div>
+      {% if not widget.is_required %}
+        <div class="input-group-append">
+          <button type="button" class="btn btn-danger clear-image" style="display:none;">Remove</button>
+        </div>
+      {% endif %}
+    </div>
+    <div class="invalid-feedback">{{ widget.errors }}</div>
+  </div>
+  

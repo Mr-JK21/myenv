@@ -1,0 +1,26 @@
+{% extends "bbase.html" %}
+
+{% block backcontent %}
+
+<div class="col-lg-11 justify-content-center align-items-center">
+  <div class="card-header">
+    <h1>Create Product</h1>
+  </div>
+<form method="post" enctype="multipart/form-data" action="{% url 'catalog:create_product' %}">
+  {% csrf_token %}
+
+    <div class="col-lg-11">
+      {% comment %} <div class="mx-auto"> {% endcomment %}
+        <div class="mb-4">
+      {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-md rounded font-sm hover-up">Save</button>
+        <a href="{% url 'sellerhome' %}" class="btn btn-md rounded font-sm hover-up">Cancel</a>
+      {% comment %} </div> {% endcomment %}
+    </div>  
+
+</form>
+</div>
+<br/>
+<br/>
+{% endblock %}

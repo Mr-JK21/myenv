@@ -1,0 +1,41 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - item
+{% endblock %}
+
+{% block backcontent %}
+  <h1>{{ user.username }}'s Products</h1>
+
+  <h2>Categories</h2>
+  <ul>
+    {% for category in categories %}
+      <li>{{ category.name }}</li>
+      <li>{{ category.created_at }}</li>
+      <li>{{ category.updated_at }}</li>
+    {% empty %}
+      <li>No categories found.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Products</h2>
+  <ul>
+    {% for product in products %}
+      <li>
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{{ product.image }}" alt="{{ product.name }}" width="100" height="100">
+        </a>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Price: &#8377;{{ product.price }}</p>
+        <p>Quantity: {{ product.quantity }}</p>
+        <p>Active: {% if product.is_active %} <b style="color:green">Yes</b> {% else %} <b style="color:red">No</b> {% endif %}</p>
+        <p>meta_keywords: {{ product.meta_keywords }}</p>
+        <p>created_at: {{ product.created_at }}</p>
+        <p>updated_at: {{ product.updated_at }}</p>
+      </li>
+    {% empty %}
+      <li>No products found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

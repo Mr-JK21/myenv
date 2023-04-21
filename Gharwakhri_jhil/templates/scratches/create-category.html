@@ -1,0 +1,16 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - category
+{% endblock %}
+
+{% block backcontent %}
+
+  <h1>Create Category</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Category</button>
+  </form>
+  
+{% endblock %}

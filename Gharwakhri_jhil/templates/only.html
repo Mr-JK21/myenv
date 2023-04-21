@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <section class="content-main">
+        {% if messages %}
+            <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">Order List</h2>
+                <p>Your Order History</p>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row gx-3">
+                    
+                </div>
+            </header>
+            <!-- card-header end// -->
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th scope="col">Seller Id</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Date</th>
+                                <th scope="col" class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in order %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.product.user.id }}</td>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.price }}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>
+                                        {% if order.status == 'Pending' %}
+                                            <span class="badge rounded-pill alert-warning">{{ order.status }}</span>
+                                        {% elif order.status == 'Confirmed' %}
+                                            <span class="badge rounded-pill alert-success">{{ order.status }}</span>
+                                        {% elif order.status == 'Ready' %}
+                                            <span class="badge rounded-pill alert-primary">{{ order.status }}</span>
+                                        {% elif order.status == 'Cancelled' %}
+                                            <span class="badge rounded-pill alert-dark">{{ order.status }}</span>
+                                        {% elif order.status == 'Rejected' %}
+                                            <span class="badge rounded-pill alert-light">{{ order.status }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ order.created_at }}</td>
+                                    <td class="text-end">
+                                        {% if order.status == 'Pending' %}
+                                            <a class="text-danger" href="{% url 'cancel_order' order.id %}">Cancel</a>
+                                        {% else %}
+                                            <a class="text-success" href="">Done</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="8" class="text-center">No orders found.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- table-responsive //end -->
+            </div>
+            <!-- card-body end// -->
+        </div>
+        <!-- card end// -->
+    </section>
+    <!-- content-main end// -->
+{% endblock %}

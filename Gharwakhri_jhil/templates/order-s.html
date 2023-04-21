@@ -1,0 +1,162 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - Order
+{% endblock %}
+
+{% block backcontent %}
+
+            <section class="content-main">
+                <div class="content-header">
+                    <div>
+                        {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <h2 class="content-title card-title">Order List</h2>
+                        <p>Your Order History</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card mb-4">
+                            <header class="card-header">
+                                {% comment %} <div class="row gx-3">
+                                    <div class="col-lg-4 col-md-6 me-auto">
+                                        <input type="text" placeholder="Search..." class="form-control" />
+                                    </div>                                                                        
+                                </div> {% endcomment %}
+                            </header>
+                            <!-- card-header end// -->
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-success" role="alert">
+                                    {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th>Product ID</th> 
+                                                <th>Product Name</th>                                                 
+                                                <th>Buyer Name</th>                                           
+                                                {% comment %} <th>Date</th> {% endcomment %}
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in orders %}                                            
+                                            <tr>
+                                                <td>{{ order.id }}</td>
+                                                <td>{{ order.price }}</td>
+                                                <td>{{ order.quantity }}</td>
+                                                <td>{{ order.total }}</td>
+                                                <td>{{ order.status }}</td>
+                                                <td>{{ order.created_at }}</td>
+                                                <td>{{ order.product.id }}</td> 
+                                                <td>{{ order.product.name }}</td>   
+                                                <td>{{ order.user }}</td>   
+                                                {% comment %} <td>{{ order.created_at }}</td> {% endcomment %}
+                                                <td>                                        
+                                                    {% if order.status == 'Pending' %}
+                                                        {% comment %} <a class="text-success" href="{% url 'confirm_order' order.pk %}">Confirm</a>                                                        
+                                                        <a class="text-warning" href="{% url 'reject_order' order.pk %}">Reject</a> {% endcomment %}
+                                                        <form method="post" action="{% url 'order_action' order.pk %}">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="action" value="confirm">
+                                                            <button class="text-success" type="submit">Confirm</button>
+                                                        </form>                                                        
+                                                        <form method="post" action="{% url 'order_action' order.pk %}">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="action" value="reject">
+                                                            <button class="text-warning" type="submit">Reject</button>
+                                                        </form>
+                                                        {% elif order.status == 'Confirmed' %}
+                                                        <form method="post" action="{% url 'order_action' order.pk %}">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="action" value="ready">
+                                                            <button class="text-primary" type="submit">Ready</button>
+                                                        </form>
+
+                                                    {% elif order.status == 'Ready' %}
+                                                        <div class="alert alert-light" role="alert">
+                                                            Done
+                                                        </div>
+                                                    {% elif order.status == 'Cancelled' %}
+                                                        <div class="alert alert-dark" role="alert">
+                                                            Cancelled
+                                                        </div>
+                                                    {% elif order.status == 'Rejected' %}
+                                                        <div class="alert alert-danger" role="alert">
+                                                            Rejected
+                                                        </div>
+                                                    {% endif %}                                                    
+                                                </td>
+                                            </tr>
+                                            
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- table-responsive //end -->
+                            </div>
+                            <!-- card-body end// -->
+                        </div>
+                        <!-- card end// -->
+                    </div>
+                    {% comment %} <div class="col-md-3">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="mb-3">Filter by</h5>
+                                <form>
+                                    <div class="mb-4">
+                                        <label for="order_id" class="form-label">Order ID</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="order_id" />
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="order_customer" class="form-label">Buyer Name</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="order_customer" />
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Order Status</label>
+                                        <select class="form-select">
+                                            <option>---------</option>
+                                            <option>Pending</option>
+                                            <option>Confirmed</option>
+                                            <option>Ready</option>
+                                            <option>Cancelled</option>
+                                            <option>Rejected</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="order_total" class="form-label">Price</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="order_total" />
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="order_created_date" class="form-label">Date Added</label>
+                                        <input type="text" placeholder="Type here" class="form-control" id="order_created_date" />
+                                    </div>                                                                        
+                                </form>
+                            </div>
+                        </div>
+                        <!-- card end// -->
+                    </div> {% endcomment %}
+                </div>
+                
+            </section>
+            <!-- content-main end// -->
+
+
+{% endblock %}

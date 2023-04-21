@@ -1,0 +1,58 @@
+{% extends "bbase.html" %}
+
+{% block backcontent %}
+<div class="container">
+  <h1>Add Product</h1>
+  <form method="post" enctype="multipart/form-data" action="{% url 'catalog:add_product' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" class="form-control" id="price" name="price" placeholder="Enter price" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" class="form-control-file" id="image" name="image" required>
+    </div>
+    <div class="form-group">
+      <label for="is_active">Active:</label>
+      <select class="form-control" id="is_active" name="is_active">
+        <option value="True">Yes</option>
+        <option value="False">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea class="form-control" id="description" name="description" placeholder="Enter description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="meta_keywords">Meta Keywords:</label>
+      <input type="text" class="form-control" id="meta_keywords" name="meta_keywords" placeholder="Enter meta keywords" required>
+    </div>
+
+ 
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select class="form-control" id="category" name="category">
+        {% for category in categories %}
+          <option value="{{ category.pk }}">{{ category.name }}</option>
+        {% endfor %}
+        <option value="add">+</option>
+      </select>
+    </div>
+    <div id="new_category_div" class="form-group d-none">
+      <label for="new_category">New Category:</label>
+      <input type="text" class="form-control" id="new_category" name="new_category" placeholder="Enter new category">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,233 @@
+{% load static %}
+<footer class="main">
+    <section class="newsletter mb-15">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="position-relative newsletter-inner">
+                        <div class="newsletter-content">
+                            <h2 class="mb-20">
+                                Get your daily <br />
+                                needs from Gharwakhri
+                            </h2>
+                            <p class="mb-45">Start You'r Daily Shopping with <span class="text-brand">Gharwakhri</span></p>
+                            <form class="form-subcriber d-flex">
+                                {% comment %} <input type="email" placeholder="Your emaill address" />
+                                <button class="btn" type="submit">Subscribe</button> {% endcomment %}
+                                {% csrf_token %}
+                                {{ frn.as_p }}
+                                <button type="submit" class="btn">Subscribe</button>
+                            </form>
+                        </div>
+                        <img src="/static/assets/imgs/banner/mailsubs banner.jpg" alt="Logo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="featured section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-1.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Best prices & offers</h3>
+                            <p>Order Now</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-2.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Ordering</h3>
+                            <p>24/7 amazing services</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-3.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Great daily deal</h3>
+                            <p>Mega Discounts</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-4.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Wide assortment</h3>
+                            <p>Check It Out           </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-5.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Order from anywhere</h3>
+                            <p>Self Pickup</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
+                    <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
+                        <div class="banner-icon">
+                            <img src="/static/assets/imgs/theme/icons/icon-6.svg" alt="" />
+                        </div>
+                        <div class="banner-text">
+                            <h3 class="icon-box-title">Safe delivery</h3>
+                            <p>Within 2 Hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-padding footer-mid">
+        <div class="container pt-15 pb-20">
+            <div class="row">
+                <div class="col">
+                    <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0">
+                        <div class="logo mb-30">
+                            <a href="{% url 'home' %}" class="mb-15"><img src="/static/assets/imgs/gharwakhri-logo-5.PNG" alt="logo" width="250px" height="70px"/></a>
+                            <p class="font-lg text-heading">Awesome online services provider</p>
+                        </div>
+                        <ul class="contact-infor">
+                            <li><img src="/static/assets/imgs/theme/icons/icon-location.svg" alt="" /><strong>Address: </strong> <span>Land of Dawn, The River, Gujarat</span></li>
+                            <li><img src="/static/assets/imgs/theme/icons/icon-contact.svg" alt="" /><strong>Call Us:</strong><span>(+91) 7486843637</span></li>
+                            <li><img src="/static/assets/imgs/theme/icons/icon-email-2.svg" alt="" /><strong>Email:</strong><span>gharwakhri_JK@gmail.com</span></li>
+                            <li><img src="/static/assets/imgs/theme/icons/icon-clock.svg" alt="" /><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-link-widget col">
+                    <h4 class="widget-title">Company</h4>
+                    <ul class="footer-list mb-sm-5 mb-md-0">
+                        <li><a href="{% url 'pgabout' %}">About Us</a></li>
+                        {% comment %} <li><a href="/#">Delivery Information</a></li> {% endcomment %}
+                        <li><a href="{% url 'privatepolicy' %}">Privacy Policy</a></li>
+                        <li><a href="{% url 'pgterms' %}">Terms &amp; Conditions</a></li>
+                        <li><a href="/#">Contact Us</a></li>
+                        {% comment %} <li><a href="/#">Support Center</a></li> {% endcomment %}
+                        <!-- <li><a href="/#">Careers</a></li> -->
+                    </ul>
+                </div>
+                <div class="footer-link-widget col">
+                    <h4 class="widget-title">Account</h4>
+                    <ul class="footer-list mb-sm-5 mb-md-0">
+                        {% if request.user.is_authenticated %}
+                            <li><a href="">My Order</a></li>
+                        {% else %}
+                            <li>Existing User  - <a href="{% url 'loginin' %}">Sign In</a></li>
+                            <li>New User - <a href="{% url 'signup' %}"></i>Sign Up</a></li>                         
+                        {% endif %}
+                        
+                        
+
+                        {% comment %} <li><a href="/#">My Wishlist</a></li> {% endcomment %}
+                        {% comment %} <li><a href="/#">Track My Order</a></li> {% endcomment %}
+                        <!-- <li><a href="/#">Help Ticket</a></li> -->
+                        <!-- <li><a href="/#">Shipping Details</a></li> -->
+                        {% comment %} <li><a href="/#">Compare products</a></li> {% endcomment %}
+                    </ul>
+                </div>
+                
+                <!-- <div class="footer-link-widget col">
+                    <h4 class="widget-title">Popular</h4>
+                    <ul class="footer-list mb-sm-5 mb-md-0">
+                        <li><a href="/#">Milk & Flavoured Milk</a></li>
+                        <li><a href="/#">Butter and Margarine</a></li>
+                        <li><a href="/#">Eggs Substitutes</a></li>
+                        <li><a href="/#">Marmalades</a></li>
+                        <li><a href="/#">Sour Cream and Dips</a></li>
+                        <li><a href="/#">Tea & Kombucha</a></li>
+                        <li><a href="/#">Cheese</a></li>
+                    </ul>
+                </div> -->
+                
+            </div>
+        </div>
+    </section>
+    <div class="container pb-30">
+        <div class="row align-items-center">
+            <div class="col-12 mb-30">
+                <div class="footer-bottom"></div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <p class="font-sm mb-0">&copy; 2023, <strong class="text-brand">Gharwakhri</strong> Online Ordering Service<br />All rights reserved</p>
+            </div>
+            <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
+                <div class="hotline d-lg-inline-flex mr-30">
+                    <img src="{% static 'assets/imgs/theme/icons/phone-call.svg' %}" alt="hotline" />
+                    <p>7486843637<span>Working 8:00 - 22:00</span></p>
+                </div>
+                <div class="hotline d-lg-inline-flex">
+                    <img src="{% static 'assets/imgs/theme/icons/phone-call.svg' %}" alt="hotline" />
+                    <p>7486843637<span>24/7 Support Center</span></p>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
+                <div class="mobile-social-icon">
+                    <h6>Follow Us</h6>
+                    <a href="#"><img src="/static/assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
+                    {% comment %} <a href="/#"><img src="/static/assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a> {% endcomment %}
+                    <a href="#"><img src="/static/assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
+                    {% comment %} <a href="/#"><img src="/static/assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a> {% endcomment %}
+                    <a href="#"><img src="/static/assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                </div>
+                <p class="font-sm">Up to 5% discount on your first subscribe</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="text-center">
+                <img src="/static/assets/imgs/theme/loading.gif" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Vendor JS-->
+<script src="/static/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="/static/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="/static/assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+<script src="/static/assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="/static/assets/js/plugins/slick.js"></script>
+<script src="/static/assets/js/plugins/jquery.syotimer.min.js"></script>
+<script src="/static/assets/js/plugins/wow.js"></script>
+<script src="/static/assets/js/plugins/slider-range.js"></script>
+<script src="/static/assets/js/plugins/perfect-scrollbar.js"></script>
+<script src="/static/assets/js/plugins/magnific-popup.js"></script>
+<script src="/static/assets/js/plugins/select2.min.js"></script>
+<script src="/static/assets/js/plugins/waypoints.js"></script>
+<script src="/static/assets/js/plugins/counterup.js"></script>
+<script src="/static/assets/js/plugins/jquery.countdown.min.js"></script>
+<script src="/static/assets/js/plugins/images-loaded.js"></script>
+<script src="/static/assets/js/plugins/isotope.js"></script>
+<script src="/static/assets/js/plugins/scrollup.js"></script>
+<script src="/static/assets/js/plugins/jquery.vticker-min.js"></script>
+<script src="/static/assets/js/plugins/jquery.theia.sticky.js"></script>
+<script src="/static/assets/js/plugins/jquery.elevatezoom.js"></script>
+<!-- Template  JS -->
+<script src="/static/assets/js/main.js?v=5.6"></script>
+<script src="/static/assets/js/shop.js?v=5.6"></script>
+</body>
+
+</html>

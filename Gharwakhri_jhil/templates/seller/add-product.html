@@ -1,0 +1,90 @@
+{% extends 'bbase.html' %}
+
+{% block title %}
+    Gharwakhri - Add Products
+{% endblock %}
+
+{% block backcontent %}
+
+<section class="content-main">
+    <div class="row">
+        <div class="col-9">
+            <div class="content-header">
+                <h2 class="content-title">Add New Product</h2>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Basic</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-4">
+                            <label for="product_name" class="form-label">Product title</label>
+                            <input type="text" placeholder="Type here" class="form-control" id="product_name" />
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Full description</label>
+                            <textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-4">
+                                    <label class="form-label">Regular price</label>
+                                    <div class="row gx-2">
+                                        <input placeholder="$" type="text" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-4">
+                                    <label class="form-label">Promotional price</label>
+                                    <input placeholder="$" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select">
+                                    <option>USD</option>
+                                    <option>EUR</option>
+                                    <option>RUBL</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Tax rate</label>
+                            <input type="text" placeholder="%" class="form-control" id="product_name" />
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            <!-- card end// -->
+            <div class="button-fields">
+                <button class="btn btn-md rounded font-sm hover-up" name="donebtn" style="float: left;">Done</button>
+                <button class="btn btn-md rounded font-sm hover-up" name="nextbtn" style="float: right;">Add Next Item</button>
+              </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Media</h4>
+                </div>
+                <div class="card-body">
+                    <div class="input-upload">
+                        <img id="preview-img" src="/static/bassets/imgs/theme/upload.svg" alt="Image" />
+                        <input id="image-input" class="form-control" type="file" accept="image/*" />
+                    </div>
+
+                </div>
+            </div>
+            <!-- card end// -->
+            
+            <!-- card end// -->
+        </div>
+        
+          
+    </div>
+</section>
+{% endblock %}

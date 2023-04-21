@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% comment %} <img src="{{ product.image.url }}" alt="{{ product.name }}" height="200">
+  <h1>{{ product.name }}</h1>
+  <p><strong>Price:</strong> {{ product.price }}</p>
+  <p><strong>MRP:</strong> {{ product.selling_price }}</p>
+  <p><strong>Description:</strong> {{ product.description }}</p>
+  <form method="POST" action="{}">
+  <p>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+  </p>
+  <p><strong>Categories:</strong> {{ product.categories }}</p>
+  <p><strong>Meta keywords:</strong> {{ product.meta_keywords }}</p>
+  <button>
+    <div class="add-cart">                                                        
+        <a class="add" href="{% url 'buyerorder' %}"><i class="fi-rs-shopping-cart mr-5"></i>Order</a>
+    </div>
+</button> {% endcomment %}
+<!-- product_detail.html -->
+<!-- product_detail.html -->
+{% if message %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endif %}
+
+<main class="main bagcolors">
+  <div class="container mb-30">
+      <div class="row flex-row-reverse">
+          <div class="col-lg-9">
+
+            <form method="POST" action="{% url 'buyer_order' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ form.initial.product_id }}">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" height="200">
+            <h1>{{ product.name }}</h1>
+            <p><strong>Price:</strong> {{ product.price }}</p>
+            <p><strong>MRP:</strong> {{ product.selling_price }}</p>
+            <p><strong>Description:</strong> {{ product.description }}</p>
+            <p>
+                <label for="quantity">Quantity:</label>
+                {{ form.quantity }}
+            </p>
+            <p><strong>Categories:</strong> {{ product.categories }}</p>
+            <p><strong>Meta keywords:</strong> {{ product.meta_keywords }}</p>
+            <button type="submit">
+                <div class="add-cart">                                                        
+                    <i class="fi-rs-shopping-cart mr-5"></i>Order
+                </div>
+            </button>
+            </form>
+
+          </div>
+        <div class="col-lg-3 primary-sidebar sticky-sidebar pt-30">
+        <div class="sidebar-widget widget-category-2 mb-30">
+          <h5 class="section-title style-1 mb-30">Category</h5>
+          <ul>
+              <li>
+                  <a href="{% url 'home' %}?category=vegetables"> <img src="/static/assets/imgs/theme/icons/category-9.svg" alt="" />
+                  Vegetables</a>
+                  {% comment %} <span class="count">6</span> {% endcomment %}
+              </li>                            
+              <li>
+                  <a href="{% url 'home' %}?category=fruits"> <img src="/static/assets/imgs/theme/icons/category-7.svg" alt="" />
+                  Fruits</a>
+                  {% comment %} <span class="count">7</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=Milks & Dairies"> <img src="/static/assets/imgs/theme/icons/category-6.svg" alt="" />
+                  Milks & Dairies</a>
+                  {% comment %} <span class="count">0</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=chocolates"> <img src="/static/assets/imgs/theme/icons/category-5.svg" alt="" />
+                  Chocolates</a>
+                  {% comment %} <span class="count">3</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=drinks"> <img src="/static/assets/imgs/theme/icons/category-2.svg" alt="" />
+                  Juice & Cold Drinks</a>
+                  {% comment %} <span class="count">2</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=clothings"> <img src="/static/assets/imgs/theme/icons/category-3.svg" alt="" />
+                  Clothings</a>
+                  {% comment %} <span class="count">0</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=stationary"> <img src="/static/assets/imgs/theme/icons/stationary.svg" alt="" />
+                  Stationary</a>
+                  {% comment %} <span class="count">1</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=electronics"> <img src="/static/assets/imgs/theme/icons/electronic.svg" alt="" />
+                  Electronics</a>
+                  {% comment %} <span class="count">8</span> {% endcomment %}
+              </li>
+              <li>
+                  <a href="{% url 'home' %}?category=toys"> <img src="/static/assets/imgs/theme/icons/toys.svg" alt="" />
+                  Toys</a>
+                  {% comment %} <span class="count">2</span> {% endcomment %}
+              </li>
+            {% comment %} <li>
+                <a href="/shop-grid-right.html"> <img src="/static/assets/imgs/theme/icons/category-1.svg" alt="" />
+                Snacks</a>
+                <span class="count">0</span>
+            </li> {% endcomment %}
+          </ul>
+        </div>              
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+
+
